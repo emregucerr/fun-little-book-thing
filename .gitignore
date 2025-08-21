@@ -1,29 +1,44 @@
 /.DS_Store
 /.env
 /__pycache__
-/temp_audio_0af5a37dc93b4a44aa377ebcc01d0f49.mp3
-/temp_audio_227fd497f82345579b6d0cfd94a52944.mp3
-/temp_audio_5fda825aee004dd39b4257d349e32b25.mp3
-/temp_audio_61aca5d16a564da88be8840b6d19741b.mp3
-/temp_audio_734286ecb167451788ad5e52ae1c5712.mp3
-/temp_audio_7569b66e792b4722b926acb483bac84c.mp3
-/temp_audio_76572c92accb4eeea2db755772f5f3c7.mp3
-/temp_audio_9243ade1d8e9420f85094a76906f1869.mp3
-/temp_audio_a20b6e997ee6436384af8f70719b36e3.mp3
-/temp_audio_a87e3774a3c04d299323788e308786f8.mp3
-/temp_audio_abab938581aa4007b5f3e3ea338471f3.mp3
-/temp_audio_c3c2fb43ae0f4a0eaac740bcc066f51e.mp3
-/temp_audio_df489fb89e2240088ab69a2ac69e7f29.mp3
-/temp_audio_fa08a97384454d26be12ac5bfef58bd5.mp3
-/temp_cropped_video_0ba67d5f441344fe97c38e49657cbf0e.mp4
-/temp_cropped_video_2dd388b792604b7ca3adc40f600d1c18.mp4
-/temp_cropped_video_34ed2857433d40a88f3b44c8b986bb77.mp4
-/temp_cropped_video_5eeb02f3361c456cbe1475b7cb40835d.mp4
-/temp_cropped_video_9048d8b995004550ab8c47408b983b75.mp4
-/temp_cropped_video_b41604c5737e494f81f35955b922af20.mp4
-/temp_video_1650160861904615b192d798f553b48a.mp4
-/temp_video_1d734deddb984086bbc9d417d9021284.mp4
-/temp_video_415692d5cc034430b807007856dc59f8.mp4
-/temp_video_664302db4bd44affbbda70ed9930cb4e.mp4
-/temp_video_71c8fe0d2cc949f2a7a1c0a815ac3793.mp4
-/temp_video_7c4806e4ce3743f9b32d2740830cc1ca.mp4
+ 
+ # Media files (images)
+ *.png
+ *.jpg
+ *.jpeg
+ *.gif
+ *.webp
+ *.bmp
+ *.tiff
+ *.tif
+ *.svg
+ *.ico
+ 
+ # Media files (audio)
+ *.mp3
+ *.wav
+ *.m4a
+ *.aac
+ *.ogg
+ *.flac
+ *.wma
+ *.aiff
+ *.aif
+ *.opus
+ *.mid
+ *.midi
+ 
+ # Media files (video)
+ *.mp4
+ *.mov
+ *.avi
+ *.mkv
+ *.webm
+ *.m4v
+ *.wmv
+ *.flv
+ *.mpeg
+ *.mpg
+ *.3gp
+ *.3g2
+ *.ts
