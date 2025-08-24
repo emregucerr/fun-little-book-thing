@@ -1,0 +1,18 @@
+
+The Split
+
+With the creation of GPT-3, the first capable language model, the stakes for Amodei increased. After seeing the scaling laws work in multiple disciplines, he considered where the technology was headed and developed an even greater interest in safety. Jack Clark, a close colleague, said, [curious] “He looked at this technology and assumed it would work. And if you assume it works, in the sense that it’s going to be as smart as a person, you can’t help but be concerned of the safety things in some sense.”
+
+Though Amodei led model development and directed a good chunk of compute, parts of the company were out of his hands — when to release models, personnel matters, how the company deploys its technology, and how it represents itself externally. “Many of those things,” Amodei says, “are not things that you control just by training the models.” He’d formed a tight-knit group around him — “the pandas” — with very different ideas from leadership. Infighting ensued, and the factions developed an intense dislike for each other.
+
+“[sarcastic] He believes that AI is so scary that only they should do it” — Jensen Huang.
+
+In our conversation, Amodei didn’t mask his feelings. “The leaders of a company, they have to be trustworthy people,” he says. “They have to be people whose motivations are sincere… If you’re working for someone whose motivations are not sincere, who’s not an honest person, who does not truly want to make the world better, it’s not going to work. You’re just contributing to something bad.”
+
+Within OpenAI, some saw his focus on safety as a route to control the company. Huang echoed these criticisms after Amodei called for GPU export controls to China. “[exhales] That’s the most outrageous lie I’ve ever heard,” Amodei says, adding he’s always wanted a “race to the top.” “I’ve said nothing that anywhere near resembles the idea that this company should be the only one to build the technology… It’s just an incredible and bad faith distortion.”
+
+Nvidia responded: “We support safe, responsible, and transparent AI… Lobbying for regulatory capture against open source will only stifle innovation… That’s not a ‘race to the top.’”
+
+OpenAI hit back as well. “We’ve always believed that AI should benefit and empower everyone… What hasn’t changed is our focus on making AI safe, useful, and available to as many people as possible.”
+
+Over time, the differences became untenable. “[sighs] Fifty percent of our time was spent trying to convince other people of views that we held, and fifty percent was spent working,” Clark says.

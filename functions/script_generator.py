@@ -2,6 +2,7 @@ from prompts.script_generator import system_prompt, user_prompt
 from utils.llm_completion import llm_completion
 
 SCRIPT_GENERATOR_MODEL = "gpt-5"
+LEFT_OVER_EXCERPT = ""
 
 def script_generator(excerpt: str, is_first_excerpt: bool, is_last_excerpt: bool, past_scripts: list[str], episode_number: int, latest_excerpt: str) -> str:
     system_prompt_text = system_prompt(is_first_excerpt, is_last_excerpt)

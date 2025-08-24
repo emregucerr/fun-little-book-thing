@@ -1,0 +1,64 @@
+<video>
+<scene>
+<visual>
+A dark, thematic cover with the title "Chapter II: Waging War" in bold gold letters. Behind the title, a faded parchment map and shadowy outlines of ancient chariots. The title stands out in the center and then fades out while the background remains.
+</visual>
+<voiceover>
+Chapter II: Waging War.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A vertical lineup of simplified golden chariots—first, a thousand swift chariots glide in, then heavy chariots follow behind in slow movement. Below, a dense group of cartoon mail-clad soldiers appears, all standing ready, their armor shining in the faint light.
+</visual>
+<voiceover>
+Sun Tzu said: In the operations of war, when a thousand swift chariots, as many heavy chariots, and 100,000 mail-clad soldiers deploy, with provisions to carry them a thousand li...
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A large silver coin appears at center. The coin splits into stacks labeled “Home,” “Front,” “Guests,” “Glue & Paint,” “Chariots & Armor.” Each stack grows taller, visually showing the cost increasing, while gold numbers tally up.
+</visual>
+<voiceover>
+The expenditure at home and at the front—including entertainment of guests, glue and paint, and sums on chariots and armor—will reach a thousand ounces of silver per day. Such is the cost of raising an army of 100,000 men.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A stack of swords and shields appears—a few brightly shining at first. As seconds pass, the swords fade and look worn, and the soldiers’ postures grow tired and slumped below the weapons.
+</visual>
+<voiceover>
+When you engage in actual fighting, if victory is long delayed, men's weapons grow dull and their ardor dampens.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A fortress wall rises vertically, while a line of tired soldiers stands before it. The camera pans up the wall, showing cracks and faded banners, then down to exhausted soldiers sitting or lying on the ground, visibly spent.
+</visual>
+<voiceover>
+If you lay siege to a town, you will exhaust your strength.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A slow ticker shows resources—silver coins, stacks of grain, and armor—decreasing rapidly. The background dims as the piles shrink, signifying dwindling state resources.
+</visual>
+<voiceover>
+Again, if the campaign is protracted, the resources of the State will not stand the strain.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A rusting sword at center, shown in close-up. Every few seconds, the blade blurs and chips further while the light dims around it.
+</visual>
+<voiceover>
+Now, when your weapons are dulled,
+</voiceover>
+</scene>
+</video>

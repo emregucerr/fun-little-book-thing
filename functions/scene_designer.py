@@ -1,10 +1,11 @@
 import globals as G
-from prompts.scene_designer import design_scene_system_prompt, design_scene_user_prompt, design_video_system_prompt, design_video_user_prompt
-from utils.generate_image import get_image_urls
+from prompts.scene_designer import design_continuous_video_user_prompt, design_scene_system_prompt, design_scene_user_prompt, design_video_system_prompt, design_video_user_prompt
 from utils.generate_image_from_images import generate_image_from_images
+from utils.generate_transition import generate_transition_video
 from utils.generate_video import generate_video_from_image
 from utils.llm_completion import llm_completion
 from utils.upload_to_bunnycdn import upload_to_bunnycdn
+from utils.video_utils import retime_clip_to_duration
 from typing import List, Dict, Any
 import re
 import xml.etree.ElementTree as ET
@@ -65,32 +66,44 @@ def _parse_scene_fallback(scene_text: str) -> List[Dict[str, Any]]:
     return shots
 
 
-def design_ai_video(visual: str, style: str, duration: str, named_entities: List[dict], first_frame_url: str = "") -> str:
+def design_ai_video(visual: str, style: str, duration: str, named_entities: List[dict], first_frame_url: str = "", messages: List[Dict[str, Any]] = []) -> str:
     duration_int = int(duration)
     duration_int = max(duration_int, 3)
     duration_int = min(duration_int, 12)
     duration = str(duration_int)
     if not first_frame_url:
         """Design a single scene video from a visual description."""
-        scene_messages = [{"role": "system", "content": design_video_system_prompt(visual, named_entities)}, {"role": "user", "content": design_video_user_prompt(visual, named_entities)}]
-        response = llm_completion(TIKTOK_GENERATOR_MODEL, scene_messages)
+        messages += [{"role": "user", "content": design_video_user_prompt(visual, named_entities)}]
+        response = llm_completion(TIKTOK_GENERATOR_MODEL, messages)
         first_frame = response.split("<first_frame>")[1].split("</first_frame>")[0].strip()
         action = response.split("<action>")[1].split("</action>")[0].strip()
-        image_prompt = first_frame + " " + style + " This is style must match the style in the style board you are given as an image."
+        last_frame = response.split("<last_frame>")[1].split("</last_frame>")[0].strip()
+        first_image_prompt = first_frame
+        last_image_prompt = last_frame + " Apply the changes onto the first image you are given."
         entitiy_images = [c['image'] for c in named_entities[:3]] if named_entities else []
-        entitiy_images = [G.MOOD_BOARD_IMAGE] + entitiy_images
-        result = generate_image_from_images(image_prompt, entitiy_images)
-        urls = get_image_urls(result)
-        image_url = urls[0]
-        video_url = generate_video_from_image(prompt=action, image_url=image_url, duration=duration)
+        entitiy_images = entitiy_images
+        first_image_url = generate_image_from_images(first_image_prompt, entitiy_images)
+        last_image_entites = [first_image_url] + entitiy_images
+        last_image_url = generate_image_from_images(last_image_prompt, last_image_entites, auto_style_transfer=False)
+        video_url = generate_transition_video(prompt=action, first_image_url=first_image_url, last_image_url=last_image_url)
     else:
-        video_url = generate_video_from_image(prompt=visual, image_url=first_frame_url, duration=duration)
+        messages += [{"role": "user", "content": design_continuous_video_user_prompt(visual, named_entities, first_frame_url)}]
+        response = llm_completion(TIKTOK_GENERATOR_MODEL, messages)
+        action = response.split("<action>")[1].split("</action>")[0].strip()
+        last_frame = response.split("<last_frame>")[1].split("</last_frame>")[0].strip()
+        last_image_prompt = last_frame + " The must match the style in the design board you are given as an image."
+        entitiy_images = [c['image'] for c in named_entities[:3]] if named_entities else []
+        entitiy_images = [first_frame_url] + entitiy_images
+        
+        last_image_url = generate_image_from_images(last_image_prompt, entitiy_images, auto_style_transfer=False)
+        video_url = generate_transition_video(prompt=action, first_image_url=first_frame_url, last_image_url=last_image_url)
 
     return video_url
 
 def design_scene(visual: str, style: str, duration: str, named_entities: List[dict]) -> str:
-    if int(duration) < 5:
-        return design_ai_video(visual, style, duration, named_entities)
+    design_video_messages = [{'role': 'system', 'content': design_video_system_prompt()}]
+    if int(duration) <= 5:
+        return design_ai_video(visual, style, duration, named_entities, messages=design_video_messages)
     else:
         cinema_messages: List[Dict[str, Any]] = [
             {"role": "system", "content": design_scene_system_prompt()},
@@ -103,7 +116,7 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
         scene_match = re.search(r"<scene>(.*?)</scene>", cinema_response, re.DOTALL)
         if not scene_match:
             # Fallback: just generate a single video if parsing fails
-            return design_ai_video(visual, style, str(min(int(duration), 5)), named_entities)
+            return design_ai_video(visual, style, str(min(int(duration), 5)), named_entities, messages=design_video_messages)
 
         # Parse the <scene> block directly. Normalize minor syntax deviations (e.g., unquoted attributes)
         scene_inner = scene_match.group(1).strip()
@@ -154,7 +167,7 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
             # Fallback: regex-based tolerant parser
             shots = _parse_scene_fallback(scene_inner)
             if not shots:
-                return design_ai_video(visual, style, str(min(int(duration), 5)), named_entities)
+                return design_ai_video(visual, style, str(min(int(duration), 5)), named_entities, messages=design_video_messages)
 
         # Generate per-shot videos, chaining continuous transitions via last-frame seeding
         generated_urls: List[str] = []
@@ -175,15 +188,43 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
                     with open(temp_video_path, "wb") as f:
                         f.write(r.content)
 
-                    # Extract last frame
+                    # Extract last frame (robustly, backing off from the end)
                     if VideoFileClip is None:
-                        raise ImportError("moviepy is required to extract frames. Install with `pip install moviepy`." )
-                    clip = VideoFileClip(temp_video_path)
-                    # Save last frame slightly before end to avoid boundary issues
-                    last_frame_time = max(0.0, (clip.duration or 0) - 1e-3)
+                        raise ImportError("moviepy is required to extract frames. Install with `pip install moviepy`.")
                     temp_image_path = f"temp_frame_{uuid.uuid4().hex}.png"
-                    clip.save_frame(temp_image_path, t=last_frame_time)
-                    clip.close()
+                    # Use context manager to ensure file handles are closed promptly
+                    with VideoFileClip(temp_video_path) as clip:
+                        duration_seconds = clip.duration or 0.0
+                        # If duration could not be read, avoid t=0 (first frame). Default to a small positive time.
+                        if duration_seconds <= 0:
+                            safe_time = 0.1
+                            clip.save_frame(temp_image_path, t=safe_time)
+                        else:
+                            # Back off by about one frame duration; if fps unavailable, use a conservative 0.05s
+                            fps = getattr(clip, "fps", None) or 24
+                            backoffs = [max(1.0 / float(fps), 0.05), 0.1, 0.2]
+                            saved = False
+                            for backoff in backoffs:
+                                t = max(0.0, duration_seconds - backoff)
+                                try:
+                                    clip.save_frame(temp_image_path, t=t)
+                                    saved = True
+                                    break
+                                except Exception:
+                                    # Try the next, larger backoff
+                                    continue
+                            if not saved:
+                                # Last-resort fallbacks away from boundaries
+                                for t in [max(0.0, duration_seconds - 0.5), max(0.0, duration_seconds / 2.0)]:
+                                    try:
+                                        clip.save_frame(temp_image_path, t=t)
+                                        saved = True
+                                        break
+                                    except Exception:
+                                        continue
+                            if not saved:
+                                # As a final fallback, take a small positive time to avoid first-frame confusion
+                                clip.save_frame(temp_image_path, t=min(0.25, max(0.0, duration_seconds)))
 
                     # Upload frame to CDN
                     task_id = f"scene_{uuid.uuid4().hex}"
@@ -207,6 +248,7 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
                 shot_duration,
                 named_entities,
                 first_frame_url,
+                messages=design_video_messages,
             )
             generated_urls.append(shot_url)
             prev_url = shot_url
@@ -223,14 +265,25 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
                 # Fallback: return the first URL if moviepy is unavailable
                 return generated_urls[0]
 
-            for url in generated_urls:
+            for idx, url in enumerate(generated_urls):
                 temp_path = f"temp_shot_{uuid.uuid4().hex}.mp4"
                 resp = requests.get(url, timeout=120)
                 resp.raise_for_status()
                 with open(temp_path, "wb") as f:
                     f.write(resp.content)
                 local_paths.append(temp_path)
-                clips.append(VideoFileClip(temp_path))
+                clip = VideoFileClip(temp_path)
+
+                # Enforce desired duration by retiming the clip if needed
+                try:
+                    target_duration_text = shots[idx].get("duration", "3") if idx < len(shots) else "3"
+                    target_duration = float(int(str(target_duration_text).strip()))
+                except Exception:
+                    target_duration = 3.0
+
+                clip = retime_clip_to_duration(clip, target_duration)
+
+                clips.append(clip)
 
             # Concatenate
             from moviepy import concatenate_videoclips  # type: ignore[import-not-found]
@@ -241,7 +294,7 @@ def design_scene(visual: str, style: str, duration: str, named_entities: List[di
             for c in clips:
                 c.close()
 
-            cdn_merged = upload_to_bunnycdn(merged_path, f"scene_{uuid.uuid4().hex}")
+            cdn_merged = upload_to_bunnycdn(merged_path, f"clips/scene_{uuid.uuid4().hex}")
             # Cleanup
             try:
                 for p in local_paths:

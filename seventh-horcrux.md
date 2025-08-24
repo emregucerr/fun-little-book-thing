@@ -1,0 +1,35 @@
+Seventh Horcrux
+Chapter 1: Harry Potter vs. Childhood​
+
+I am Lord Voldemort, and I was one step away from conquering Wizarding Britain.
+
+October 31st, 1981 began as a fairly normal day – arranging raids, crucioing incompetents, lazing about on my throne – yet it seemed that everything my followers did irked me.
+
+Bellatrix crouched at my feet, sneaking glances and occasionally emitting dreamy sighs – exactly the sort of behavior that caused me to turn myself into a nose-less snake. Rabastan Lestrange was playing a game called Curse the Recruits, the recruits were screaming, Nott was paging through one of my Dark tomes, and Lucius had disappeared to go brush his hair or something. There are worse ways to spend Halloween, I suppose.
+
+"M-my Lord!" a nasally voice cried, scurrying towards my throne. "I have information on the Potters."
+
+I paused for a moment, contemplating the Death Eater's words. The Potters were Dumbledore's minions, the ones with the prophesied child. They'd defied me three times. I should know; I keep a list of these things.
+
+"Speak quickly, then," I snapped, "I don't like to be kept waiting."
+
+The short Death Eater cowered at my feet, and I noted that he was particularly talented at cowering.
+"I'm s-s-sorry, my lord. I've gained their trust, as you ordered me to, and I can tell you that…" – he took a shuddering breath – "the Potters may be found at Godric's Hallow."
+
+He rattled off the proper address, stumbling over every other word. The man was clearly incompetent, but he had been quite useful.
+
+I said, "I am immensely pleased with this information…"
+
+What was his name again? I narrowed my eyes at the still shivering man's unremarkable, brown hair. That was the trouble with giving all your followers masks. They all looked so similar. After a moment of silence, I murmured, "My faithful servant."
+
+"Thank you, my l-lord," he simpered, bowing again and again. By the fifth time, I'd become peeved and, with an idle flick of my wand, slammed him into the stones.
+
+"You are dismissed."
+
+The bleeding man stumbled from the room.
+
+Seizing the opportunity to escape my followers, I gracefully rose to my feet.
+
+"I shall be busy for some time. Do not kill any of your fellow Death Eaters without my permission" – I sternly eyed Bellatrix – "We hardly need a repetition of last Valentine's Day."
+
+She bowed her head sullenly. "Yes my lord."

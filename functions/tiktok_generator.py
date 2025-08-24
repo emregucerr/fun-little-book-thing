@@ -1,9 +1,9 @@
 import globals as G
 from prompts.tiktok_generator import breakdown_scene, describe_named_entity_prompt, extract_named_entity_names_system_prompt, extract_named_entity_names_user_prompt, google_image_search_query_prompt, google_image_search_query_user_prompt, system_prompt, user_prompt
 from functions.scene_designer import design_scene
-from utils.generate_image import generate_image, get_image_urls
 from utils.generate_image_from_images import generate_image_from_images
 from utils.google_images_light import search_google_images_light_urls
+from utils.named_entities_cache import get_entity_by_name, upsert_entity
 from utils.llm_completion import llm_completion
 import re
 import xml.etree.ElementTree as ET
@@ -60,6 +60,16 @@ def ensure_named_entity_generated(named_entity_name: str, messages: List[Dict[st
         existing_name = existing.get("name") or ""
         if normalize_text_for_comparison(existing_name) == canonical_name:
             return existing
+    
+    # Check persistent JSON cache before generating anything expensive
+    cached = get_entity_by_name(named_entity_name)
+    if isinstance(cached, dict) and cached.get("name"):
+        # Also add to in-memory list if not present
+        existing_normalized = {normalize_text_for_comparison((c.get('name') or "")) for c in G.NAMED_ENTITIES_LIST}
+        if canonical_name not in existing_normalized:
+            G.NAMED_ENTITIES_LIST.append(cached)
+            _dedupe_named_entities_list()
+        return cached
         
     google_image_search_query_messages = [{"role": "system", "content": google_image_search_query_prompt(named_entity_name)}, {"role": "user", "content": google_image_search_query_user_prompt(named_entity_name)}]
     google_image_search_query_response = llm_completion(TIKTOK_GENERATOR_MODEL, google_image_search_query_messages)
@@ -75,7 +85,7 @@ def ensure_named_entity_generated(named_entity_name: str, messages: List[Dict[st
         max_results=20,
     )
     reference_images = google_image_urls[:3] if google_image_urls else []
-    reference_images = [G.MOOD_BOARD_IMAGE] + reference_images
+    reference_images = reference_images
 
     describe_named_entity_messages = messages.copy()
     describe_named_entity_messages.append({
@@ -93,16 +103,13 @@ def ensure_named_entity_generated(named_entity_name: str, messages: List[Dict[st
     if not description:
         description = f"{named_entity_name} in {G.BOOK_NAME}"
 
-    prompt = f"{prompt}. How this look like in the real life given in the reference images. In this style: {G.STYLE}. The style must match the style board you are given as an image."
+    prompt = f"{prompt}. How this look like in the real life given in the reference images."
 
     entity_image = ""
     while google_image_urls and not entity_image:
         try:
             reference_images = google_image_urls[:3] if google_image_urls else []
-            reference_images = [G.MOOD_BOARD_IMAGE] + reference_images
-            entity_image_result = generate_image_from_images(prompt, reference_images)
-            image_urls = get_image_urls(entity_image_result)
-            entity_image = image_urls[0]
+            entity_image = generate_image_from_images(prompt, reference_images)
             break
         except Exception as e:
             print(f"Error generating image for {named_entity_name}: {e}")
@@ -110,10 +117,8 @@ def ensure_named_entity_generated(named_entity_name: str, messages: List[Dict[st
 
     if not entity_image:
         print(f"Falling back to simple image generation for {named_entity_name}...")
-        reference_images = [G.MOOD_BOARD_IMAGE]
-        entity_image_result = generate_image_from_images(prompt, reference_images)
-        image_urls = get_image_urls(entity_image_result)
-        entity_image = image_urls[0]
+        reference_images = []
+        entity_image = generate_image_from_images(prompt, reference_images)
 
     new_named_entity = {
         "name": named_entity_name,
@@ -121,6 +126,13 @@ def ensure_named_entity_generated(named_entity_name: str, messages: List[Dict[st
         "prompt": prompt,
         "image": entity_image,
     }
+
+    # Persist to JSON cache
+    try:
+        upsert_entity(new_named_entity)
+    except Exception as e:
+        # Non-fatal: proceed even if cache write fails
+        print(f"Warning: failed to write named entity to cache: {e}")
 
     existing_normalized = {normalize_text_for_comparison((c.get('name') or "")) for c in G.NAMED_ENTITIES_LIST}
     if canonical_name not in existing_normalized:
@@ -240,9 +252,9 @@ def parse_tiktok_response(response: str) -> Dict[str, Any]:
     """Parse the TikTok XML response into a dictionary structure."""
     try:
         # Find the tiktok content between tags
-        tiktok_match = re.search(r'<tiktok>(.*?)</tiktok>', response, re.DOTALL)
+        tiktok_match = re.search(r'<video>(.*?)</video>', response, re.DOTALL)
         if not tiktok_match:
-            return {"error": "No tiktok tags found in response"}
+            return {"error": "No video tags found in response"}
         
         tiktok_content = tiktok_match.group(1).strip()
         
@@ -268,7 +280,7 @@ def parse_tiktok_response(response: str) -> Dict[str, Any]:
             scenes.append(scene)
         
         return {
-            "tiktok": {
+            "video": {
                 "scenes": scenes
             }
         }
@@ -335,9 +347,6 @@ def process_single_scene(scene_data: Tuple[int, int, Dict[str, str], str, str, L
         
         # Round up to the nearest integer for video generation (to ensure we have enough video content)
         video_generation_duration = math.ceil(exact_audio_duration)
-        video_generation_duration = min(video_generation_duration, 12)
-        video_generation_duration = max(video_generation_duration, 3)
-        
         # Generate video with the rounded duration (to ensure we have enough content)
         video_url = design_scene(visual, visual_style, str(video_generation_duration), named_entities)
         
@@ -374,6 +383,7 @@ def process_scenes(scenes: List[Dict[str, str]], visual_style: str, voice_id: st
     all_temp_files = []
     
     NUM_WORKERS = 10
+    is_development = os.getenv('ENVIRONMENT', '').lower() == 'development'
     
     # 1) Pre-extract named entities from all scenes in parallel (before processing scenes)
     def _extract_entities(scene: Dict[str, str]) -> List[str]:
@@ -400,36 +410,53 @@ def process_scenes(scenes: List[Dict[str, str]], visual_style: str, voice_id: st
         for scene_index, scene in enumerate(scenes)
     ]
     
-    # 2) Process scenes in parallel with NUM_WORKERS workers
-    with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
-        # Submit all scene processing tasks
-        future_to_scene = {
-            executor.submit(
-                process_single_scene,
-                scene_data,
-                named_entities_per_scene[scene_index] if scene_index < len(named_entities_per_scene) else []
-            ): scene_index 
-            for scene_index, scene_data in enumerate(scene_data_list)
-        }
-        
-        # Collect results as they complete
-        scene_results: List[Optional[Tuple[Optional[str], str]]] = [None] * len(scenes)  # Initialize with correct size
-        
-        for future in as_completed(future_to_scene):
-            scene_index = future_to_scene[future]
+    # 2) Process scenes either sequentially (development) or in parallel (default)
+    scene_results: List[Optional[Tuple[Optional[str], str]]] = [None] * len(scenes)
+    if is_development:
+        print("ENVIRONMENT=development detected – processing scenes sequentially (no parallelization)...")
+        for scene_index, scene_data in enumerate(scene_data_list):
             try:
-                scene_video_path, voiceover_text, temp_files = future.result()
+                scene_video_path, voiceover_text, temp_files = process_single_scene(
+                    scene_data,
+                    named_entities_per_scene[scene_index] if scene_index < len(named_entities_per_scene) else []
+                )
                 scene_results[scene_index] = (scene_video_path, voiceover_text)
                 all_temp_files.extend(temp_files)
-                
                 if scene_video_path:
                     print(f"Completed scene {scene_index + 1}")
                 else:
                     print(f"Failed to process scene {scene_index + 1}")
-                    
             except Exception as e:
                 print(f"Error processing scene {scene_index + 1}: {e}")
                 scene_results[scene_index] = (None, scenes[scene_index]['voiceover'])
+    else:
+        with ThreadPoolExecutor(max_workers=NUM_WORKERS) as executor:
+            # Submit all scene processing tasks
+            future_to_scene = {
+                executor.submit(
+                    process_single_scene,
+                    scene_data,
+                    named_entities_per_scene[scene_index] if scene_index < len(named_entities_per_scene) else []
+                ): scene_index 
+                for scene_index, scene_data in enumerate(scene_data_list)
+            }
+            
+            # Collect results as they complete
+            for future in as_completed(future_to_scene):
+                scene_index = future_to_scene[future]
+                try:
+                    scene_video_path, voiceover_text, temp_files = future.result()
+                    scene_results[scene_index] = (scene_video_path, voiceover_text)
+                    all_temp_files.extend(temp_files)
+                    
+                    if scene_video_path:
+                        print(f"Completed scene {scene_index + 1}")
+                    else:
+                        print(f"Failed to process scene {scene_index + 1}")
+                        
+                except Exception as e:
+                    print(f"Error processing scene {scene_index + 1}: {e}")
+                    scene_results[scene_index] = (None, scenes[scene_index]['voiceover'])
     
     # Extract video paths and voiceover texts, maintaining order
     for result in scene_results:
@@ -698,9 +725,9 @@ def tiktok_generator(script: str, past_tiktoks: List[str] = [],
 
     response = llm_completion(TIKTOK_GENERATOR_MODEL, messages)
 
-    while '<tiktok>' not in response:
+    while '<video>' not in response:
         temp_messages = messages.copy()
-        temp_messages.append({"role": "user", "content": "Your response is not valid. It does not contain the <tiktok> tags. Please try again with a valid <tiktok> object."})
+        temp_messages.append({"role": "user", "content": "Your response is not valid. It does not contain the <video> tags. Please try again with a valid <video> object."})
         response = llm_completion(TIKTOK_GENERATOR_MODEL, temp_messages)
 
     print("Tiktok response: ", response)
@@ -722,8 +749,8 @@ def tiktok_generator(script: str, past_tiktoks: List[str] = [],
     
     # If video processing is requested and we have valid scenes
     video_output_paths = []
-    if process_videos and "tiktok" in parsed_response and "scenes" in parsed_response["tiktok"] and output_dir:
-        scenes = parsed_response["tiktok"]["scenes"]
+    if process_videos and "video" in parsed_response and "scenes" in parsed_response["video"] and output_dir:
+        scenes = parsed_response["video"]["scenes"]
         
         # Split scenes into equal parts if there are more than 20 scenes
         scene_parts = split_scenes_into_equal_parts(scenes, max_scenes_per_part=20)

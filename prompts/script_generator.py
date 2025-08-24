@@ -1,5 +1,5 @@
 def system_prompt(is_first_excerpt: bool, is_last_excerpt: bool) -> str:
-    res = """You are a professional abridger that distills books into abridgements for audiobooks. You will be given an excerpt from the book and the last few paragraphs of the existing abridgement if available. Your job is to distill the excerpt into a coherent and cohesive abridgement that is a smooth continuation of the previous abridgement and extend the abridgement to cover the new excerpt.
+    res = ["""You are a professional abridger that distills books into abridgements for audiobooks. You will be given an excerpt from the book and the last few paragraphs of the existing abridgement if available. Your job is to distill the excerpt into a coherent and cohesive abridgement that is a smooth continuation of the previous abridgement and extend the abridgement to cover the new excerpt.
 
 1. **Preserves the author’s original voice, tone, and phrasing**—if the source is first‑person, remain first‑person; third‑person stays third‑person.
 2. **Distills** the excerpt **verbatim where possible**, removing only non‑essential material, but never paraphrasing or altering key language.
@@ -31,92 +31,186 @@ Good Example:
 Alice fell down the rabbit hole.
 ```
 Notice the good left abdridgement left out the new chapter/section even if it was mentioned in the end of the excerpt.
-"""
+"""]
 
-#     res.append("\nIn the script you can also convey emotions by using audio tags. These are tags that you can use to prompt the voiceover artist change their tone, style.")
-#     res.append("""These tags are words or phrases enclosed in square brackets that you insert directly into the text you want the AI to speak.
+#     res.append("""---
+# Prompting The Voiceover Artist In Your Script:
+# Learn how to write a script with audio tags to prompt the voiceover artist to be expressive and dynamic. You must use audio tags frequently to make the audiobook more engaging and interesting.
+# ---
 
-# Here's a breakdown of the types of emotion and voice-related tags available:
+# You can direct the voiceover artist to be expressive and dynamic through audio tags. You can direct voices to laugh, whisper, act sarcastic, or express curiosity among many other styles. Speed is also controlled through audio tags. You can also use audio tags to create voice effects or exclamations/non-verbal sounds for character dialogue.
 
-# Emotional States:
-# - [excited]
-# - [nervous]
-# - [frustrated]
-# - [sorrowful]
-# - [calm]
-# - [sad]
-# - [angry]
-# - [happily]
-# - [curious]
-# - [mischievously]
-                
-# Voice-related/Delivery Direction:
-# - [laughs], [laughs harder], [starts laughing], [wheezing]
-# - [whispers] or [whispering]
-# - [sighs], [exhales], [sigh of relief]
-# - [sarcastic]
-# - [crying]
-# - [snorts]
-# - [shouts] or [shouting]
-# - [speaking softly]
-# - [light chuckle]
-# - [pauses]
-# - [hesitates]
-# - [stammers]
-# - [resigned tone]
-# - [cheerfully]
-# - [flatly]
-# - [deadpan]
-# - [playfully]
-# - [strong X accent] (replace X with desired accent)
-# - [sings]
-# - [woo]
-                
-# Non-Verbal Reactions/Sound Effects:
-# - [gunshot]
-# - [applause], [clapping]
-# - [explosion]
-# - [swallows], [gulps]
-# - [gasps]
-# - [clears throat]
-# - [fart]
-                
-# These tags can be combined for layered emotional effects, such as [nervously][whispers].""")
-    
-#     res.append("""Examples:
-#                Sure, here are some usage examples of ElevenLabs emotion tags:
+# ### Voice-related
 
-# *   **Simple Emotion:**
-#     *   "I am so `[excited]` to see you!"
-#     *   "`[Sorrowfully]` she whispered, 'I'm so sorry.'"
+# These tags control vocal delivery and emotional expression:
 
-# *   **Combined Tags:**
-#     *   "He replied, `[nervously][whispering]` 'I don't know if I can do this.'"
-#     *   "The dog barked `[playfully][happily]` as it chased its tail."
+# - `[laughs]`, `[laughs harder]`, `[starts laughing]`, `[wheezing]`
+# - `[whispers]`
+# - `[sighs]`, `[exhales]`
+# - `[sarcastic]`, `[curious]`, `[excited]`, `[crying]`, `[snorts]`, `[mischievously]`
 
-# *   **Non-Verbal Sounds:**
-#     *   "`[Sighs]` What a long day."
-#     *   "The crowd erupted in `[applause]`."
-#     *   "He let out a `[light chuckle]` at the unexpected joke."
+# ```text Example
+# [whispers] I never knew it could be this way, but I'm glad we're here.
+# ```
 
-# *   **Delivery and Tone:**
-#     *   "She said `[sarcastic]` 'Oh, that's just brilliant!'"
-#     *   "`[Shouting]` Get out of here!"
-#     *   "He spoke `[flatly]` "It is what it is."
+# ### Sound effects
 
-# *   **Character Voice/Accent:**
-#     *   "`[strong Irish accent]` Top o' the mornin' to ya!"
-#     *   "`[sings]` Happy birthday to you!"
+# Add environmental sounds and effects:
 
-# **Important Notes for Usage:**
+# - `[gunshot]`, `[applause]`, `[clapping]`, `[explosion]`
+# - `[swallows]`, `[gulps]`
 
+# ```text Example
+# [applause] Thank you all for coming tonight! [gunshot] What was that?
+# ```
+
+# ### Unique and special
+
+# Experimental tags for creative applications:
+
+# - `[strong X accent]` (replace X with desired accent)
+# - `[sings]`, `[woo]`, `[fart]`
+
+# ```text Example
+# [strong French accent] "Zat's life, my friend — you can't control everysing."
+# ```
+
+# <Warning>
+#   Some experimental tags may be less consistent
+# </Warning>
+
+# ## Punctuation
+
+# Punctuation significantly affects delivery in v3:
+
+# - **Ellipses (...)** add pauses and weight
+# - **Capitalization** increases emphasis
+# - **Standard punctuation** provides natural speech rhythm
+
+# ```text Example
+# "It was a VERY long day [sigh] … nobody listens anymore."
+# ```
+
+# ## Single speaker examples
+
+# Use tags intentionally and match them to the voice's character. A meditative voice shouldn't shout; a hyped voice won't whisper convincingly.
+
+# <Tabs>
+#   <Tab title="Expressive monologue">
+#     ```text
+#     "Okay, you are NOT going to believe this.
+
+#     You know how I've been totally stuck on that short story?
+
+#     Like, staring at the screen for HOURS, just... nothing?
+
+#     [frustrated sigh] I was seriously about to just trash the whole thing. Start over.
+
+#     Give up, probably. But then!
+
+#     Last night, I was just doodling, not even thinking about it, right?
+
+#     And this one little phrase popped into my head. Just... completely out of the blue.
+
+#     And it wasn't even for the story, initially.
+
+#     But then I typed it out, just to see. And it was like... the FLOODGATES opened!
+
+#     Suddenly, I knew exactly where the character needed to go, what the ending had to be...
+
+#     It all just CLICKED. [happy gasp] I stayed up till, like, 3 AM, just typing like a maniac.
+
+#     Didn't even stop for coffee! [laughs] And it's... it's GOOD! Like, really good.
+
+#     It feels so... complete now, you know? Like it finally has a soul.
+
+#     I am so incredibly PUMPED to finish editing it now.
+
+#     It went from feeling like a chore to feeling like... MAGIC. Seriously, I'm still buzzing!"
+#     ```
+
+#   </Tab>
+#   <Tab title="Dynamic and humorous">
+#     ```text
+#     [laughs] Alright...guys - guys. Seriously.
+
+#     [exhales] Can you believe just how - realistic - this sounds now?
+
+#     [laughing hysterically] I mean OH MY GOD...it's so good.
+
+#     Like you could never do this with the old model.
+
+#     For example [pauses] could you switch my accent in the old model?
+
+#     [dismissive] didn't think so. [excited] but you can now!
+
+#     Check this out... [cute] I'm going to speak with a french accent now..and between you and me
+
+#     [whispers] I don't know how. [happy] ok.. here goes. [strong French accent] "Zat's life, my friend — you can't control everysing."
+
+#     [giggles] isn't that insane? Watch, now I'll do a Russian accent -
+
+#     [strong Russian accent] "Dee Goldeneye eez fully operational and rready for launch."
+
+#     [sighs] Absolutely, insane! Isn't it..? [sarcastic] I also have some party tricks up my sleeve..
+
+#     I mean i DID go to music school.
+
+#     [singing quickly] "Happy birthday to you, happy birthday to you, happy BIRTHDAY dear ElevenLabs... Happy birthday to youuu."
+#     ```
+
+#   </Tab>
+#   <Tab title="Customer service simulation">
+#     ```text
+#     [professional] "Thank you for calling Tech Solutions. My name is Sarah, how can I help you today?"
+
+#     [sympathetic] "Oh no, I'm really sorry to hear you're having trouble with your new device. That sounds frustrating."
+
+#     [questioning] "Okay, could you tell me a little more about what you're seeing on the screen?"
+
+#     [reassuring] "Alright, based on what you're describing, it sounds like a software glitch. We can definitely walk through some troubleshooting steps to try and fix that."
+#     ```
+
+#   </Tab>
+# </Tabs>
+
+# ## Tips
+
+# <AccordionGroup>
+#   <Accordion title="Tag combinations">
+#     You can combine multiple audio tags for complex emotional delivery. Experiment with different
+#     combinations to find what works best for your voice.
+#   </Accordion>
+#   <Accordion title="Text structure">
+#     Text structure strongly influences output with the voiceover artist. Use natural speech patterns, proper
+#     punctuation, and clear emotional context for best results.
+#   </Accordion>
+#   <Accordion title="Experimentation">
+#     There are likely many more effective tags beyond this list. Experiment with descriptive
+#     emotional states and actions to discover what works for your specific use case.
+#   </Accordion>
+# </AccordionGroup>
+
+# IMPORTANT:  
 # *   **Placement:** The tags should be placed directly in the text where you want the emotion or vocal style to occur.
 # *   **Context:** While the tags provide direction, the AI also interprets the surrounding text for context.
-# *   **Voice Choice:** The impact of the tags can vary significantly depending on the voice model you select. Experiment with different voices to find the best fit for the desired emotional delivery.
-# *   **Stability Settings:** For the most expressive results with emotion tags in Eleven v3, ElevenLabs recommends using "Creative" or "Natural" stability settings. Lower stability settings allow for more variability in the AI's output, which can be beneficial for conveying nuanced emotions.
-# *   **Experimentation:** The best way to understand how these tags work is to experiment with them yourself! Try different tags, combinations, and placements to see what results you get.""")
+# *   **Driving engagement: ** Frequently use the tags throughout the script to make it much more compelling and interesting.""")
+
+#     res.append("""
+# **CHAPTERS, SECTIONS, TITLES, ETC.**
+# - If the script has a chapter change in the middle of the excerpt, you must identify the new chapter with a <new_chapter/> tag.
+# Example:
+# ```
+# ...
+# Alice was in a room
+# <new_chapter/>
+# Chapter 2: The room
+# The room was dark and cold.
+# ...
+# ```
+# """)
     
-    return res
+    return "\n".join(res)
 
 def user_prompt(excerpt: str, past_scripts: list[str], episode_number: int, is_first_excerpt: bool, is_last_excerpt: bool, latest_excerpt: str) -> str:
     res = ""

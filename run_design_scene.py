@@ -27,7 +27,7 @@ def build_default_entities() -> List[Dict[str, str]]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run design_scene and print resulting video URL")
-    parser.add_argument("--visual", type=str, default="Minimalist depiction of semiconductor chips with export arrows pointing away from China; shadowy figures of tech leaders stand divided, some shaking hands, others turning away.", help="Visual description for the scene")
+    parser.add_argument("--visual", type=str, default="A close-up shot of an old medical file labeled \"Fatal Illness\", then cuts to a dramatic timeline. In 4 years, a bold arrow points from \"50% Fatal\" to \"95% Curable\", glowing in hopeful green.", help="Visual description for the scene")
     parser.add_argument("--duration", type=str, default="9", help="Total duration in seconds (string between 3 and 12)")
     parser.add_argument("--style", type=str, default=G.STYLE, help="Visual style to apply")
     parser.add_argument("--download", action="store_true", help="Download the resulting video locally")

@@ -1,0 +1,158 @@
+<video>
+<scene>
+<visual>
+Shot 1: Extreme close-up of an hourglass centered in a 9:16 frame; sand rushes quickly through the narrow center.
+Shot 2: Hard cut to a rusted wall clock filling the frame; the second hand drags slowly.
+Shot 3: Hard cut to a single dusty chess knight centered on a board; faint light shifts across it.
+</visual>
+<voiceover>
+[exhales] 5. Thus, though we have heard of stupid haste in war, cleverness has never been seen associated with long delays.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A parchment map of a country centered vertically; fine cracks spread across it.
+Shot 2: Hard cut to a tall stack of calendar pages rising upward in the center; the stack wobbles.
+Shot 3: Hard cut to a single gold coin marked “Benefit” centered; it fractures and dulls.
+</visual>
+<voiceover>
+6. There is no instance of a country having benefited from prolonged warfare.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: Candlelit desk centered in frame; a scorched map lies flat as a soft breeze flickers the flame.
+Shot 2: Hard cut to a close-up of a worn general’s helm resting on the table; scratches catch the candlelight.
+Shot 3: Hard cut to a quill underlining the phrase “evils of war” on a scroll.
+</visual>
+<voiceover>
+[whispers] 7. It is only one who is thoroughly acquainted with the evils of war that can thoroughly understand the profitable way of carrying it on.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A wooden supply wagon icon centered; a crate labeled “1” lowers in.
+Shot 2: Hard cut; a second crate labeled “2” lowers in and locks.
+Shot 3: Hard cut; a ghosted third crate appears above with a red “X” hovering, then fades.
+</visual>
+<voiceover>
+8. The skillful soldier does not raise a second levy, neither are his supply-wagons loaded more than twice.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: Crates stamped “From Home” stacked neatly in the center; a hand stamp approves them.
+Shot 2: Hard cut to a close-up of ripe grain heads swaying; a gloved hand gathers a small bundle.
+Shot 3: Hard cut to a simple iron pot centered over embers; ladle stirs once.
+</visual>
+<voiceover>
+9. Bring war material with you from home, but forage on the enemy. Thus the army will have food enough for its needs.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A treasury chest centered; coins flow out forming a long dotted line toward a tiny distant camp icon near the top.
+Shot 2: Hard cut to a village doorway; empty shelves visible behind.
+Shot 3: Hard cut to hands cupping an empty wooden bowl at center.
+</visual>
+<voiceover>
+10. Poverty of the State exchequer causes an army to be maintained by contributions from a distance. Contributing to maintain an army at a distance causes the people to be impoverished.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A bare interior wall with a single peg; an empty coat hook swings slightly.
+Shot 2: Hard cut to an open cupboard centered and vertical; shelves are empty and dusty.
+Shot 3: Hard cut to a vertical bar labeled “Income”; a segment marked “-30%” fades out.
+</visual>
+<voiceover>
+13,14. With this loss of substance and exhaustion of strength, the homes of the people will be stripped bare, and three-tenths of their income will be dissipated;
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: Close-up of a cracked chariot wheel leaning center frame.
+Shot 2: Hard cut to a frayed horse harness draped over a post; leather is worn thin.
+Shot 3: Hard cut to a simple vertical pie chart; a 40% slice glows beside small icons: helmet, bow, spear, shield, ox, heavy wagon.
+</visual>
+<voiceover>
+while government expenses for broken chariots, worn-out horses, breast-plates and helmets, bows and arrows, spears and shields, protective mantles, draught-oxen and heavy wagons, will amount to four-tenths of its total revenue.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A single enemy supply cart icon centered.
+Shot 2: Hard cut; the cart duplicates rapidly into twenty faint cart icons stacked vertically behind it.
+Shot 3: Hard cut to one burlap sack labeled “picul” centered; it multiplies into twenty small sacks forming a vertical column.
+</visual>
+<voiceover>
+[whispers] 15. Hence a wise general makes a point of foraging on the enemy. One cartload of the enemy's provisions is equivalent to twenty of one's own, and likewise a single picul of his provender is equivalent to twenty from one's own store.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A war drum centered; a mallet strikes once, the drumhead ripples.
+Shot 2: Hard cut to a forearm clenching into a fist; veins tighten.
+Shot 3: Hard cut to a small pouch of coins placed center; a seal stamp marks it “Reward.”
+</visual>
+<voiceover>
+16. Now in order to kill the enemy, our men must be roused to anger; that there may be advantage from defeating the enemy, they must have their rewards.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A vertical line of captured chariots appears center; a counter ticks up to “10+”.
+Shot 2: Hard cut; a medal icon drops onto the first chariot in the line and glows.
+</visual>
+<voiceover>
+17. Therefore in chariot fighting, when ten or more chariots have been taken, those should be rewarded who took the first.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A single chariot centered with an enemy flag; the flag flips to our flag.
+Shot 2: Hard cut; two vertical columns of chariots gently intermix into one centered column.
+</visual>
+<voiceover>
+Our own flags should be substituted for those of the enemy, and the chariots mingled and used in conjunction with ours.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A prisoner’s hands (unbound) receive a water cup centered in frame.
+Shot 2: Hard cut to a blanket being draped over shoulders from offscreen hands; the prisoner sits calmly.
+</visual>
+<voiceover>
+The captured soldiers should be kindly treated and kept.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A simple bar labeled “Strength” at center; it rises smoothly.
+Shot 2: Hard cut; silhouettes of former foes step into a single vertical rank behind our banner.
+</visual>
+<voiceover>
+18. This is called, using the conquered foe to augment one's own strength.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A short, straight path leads to a golden laurel centered at the top; it glows.
+Shot 2: Hard cut; a long winding path fades with a red “X”.
+Shot 3: Subtle breath vapor drifts across the frame once.
+</visual>
+<voiceover>
+[exhales] 19. In war, then, let your great object be victory, not lengthy campaigns.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Shot 1: A general’s silhouette centered, holding a balanced scale.
+Shot 2: Hard cut; left pan holds a white olive branch labeled “Peace,” glowing softly.
+Shot 3: Hard cut; right pan holds a red ember labeled “Peril,” emitting faint smoke.
+</visual>
+<voiceover>
+20. Thus it may be known that the leader of armies is the arbiter of the people's fate, the man on whom it depends whether the nation shall be in peace or in peril.
+</voiceover>
+</scene>
+</video>

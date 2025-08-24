@@ -1,0 +1,81 @@
+<video>
+<scene>
+<visual>
+The vertical shot opens with a dark, ominous castle interior. The title "Seventh Horcrux" appears in stylized, glowing font in the center, with "Chapter 1: Harry Potter vs. Childhood" underneath in smaller text. The spooky Hogwarts silhouette is dimly visible through shadowy arches. After a second, the title fades out, leaving only the castle in dramatic low light.
+</visual>
+<voiceover>
+Seventh Horcrux. Chapter 1: Harry Potter vs. Childhood.​
+</voiceover>
+</scene>
+<scene>
+<visual>
+A single ornate throne sits center frame in a gloomy stone chamber. Voldemort -- hooded, pale, snake-like features -- reclines on the throne, wand in hand. Close up on his emotionless face, then briefly zooms out to show Bellatrix crouching at his feet, sneaking glances at him. Dark-clad followers linger in shadows, some nervously fidgeting, others motionless.
+</visual>
+<voiceover>
+I am Lord Voldemort, and I was one step away from conquering Wizarding Britain. October 31st, 1981 began as a fairly normal day – arranging raids, crucioing incompetents, lazing about on my throne – yet it seemed that everything my followers did irked me.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Bellatrix is shown crouched at Voldemort's feet, her face dreamy and infatuated. The scene hard cuts to Rabastan Lestrange aggressively aiming his wand at younger recruits in the background, looking gleeful as they duck and scream. Another shot shows Nott flipping through a dusty, ancient Dark tome beneath a dim chandelier. Final shot is Lucius Malfoy off to the side, brushing his well-maintained hair, back turned toward the group.
+</visual>
+<voiceover>
+Bellatrix crouched at my feet, sneaking glances and occasionally emitting dreamy sighs – exactly the sort of behavior that caused me to turn myself into a nose-less snake. Rabastan Lestrange was playing a game called Curse the Recruits, the recruits were screaming, Nott was paging through one of my Dark tomes, and Lucius had disappeared to go brush his hair or something. There are worse ways to spend Halloween, I suppose.
+</voiceover>
+</scene>
+<visual>
+A nervous Death Eater rushes into the throne room, cape fluttering, his face half-obscured by a mask. The camera lingers on his tense, hunched posture as he stops and shrieks in panic. Close-up on Voldemort’s pale fingers drumming impatiently on the throne arm.
+</visual>
+<voiceover>
+"M-my Lord!" a nasally voice cried, scurrying towards my throne. "I have information on the Potters."
+</voiceover>
+</scene>
+<scene>
+<visual>
+Voldemort sits upright, eyes narrowing pensively. Cut to a parchment titled “Defied Me” with “Potters” written three times, and other names struck out. Show a magical globe flashing to “Godric’s Hallow” in glowing script.
+</visual>
+<voiceover>
+I paused for a moment, contemplating the Death Eater's words. The Potters were Dumbledore's minions, the ones with the prophesied child. They'd defied me three times. I should know; I keep a list of these things.
+</voiceover>
+</scene>
+<scene>
+<visual>
+A close-up of Voldemort’s impatient, snake-like face. The frightened Death Eater kneels, eyes wide, mask slipping as he shakily speaks. His hands tremble while holding a scribbled note with the Potters’ address. The camera shifts rapidly from his cowering form to Voldemort’s cold expression.
+</visual>
+<voiceover>
+"Speak quickly, then," I snapped, "I don't like to be kept waiting." The short Death Eater cowered at my feet, and I noted that he was particularly talented at cowering. "I'm s-s-sorry, my lord. I've gained their trust, as you ordered me to, and I can tell you that…the Potters may be found at Godric's Hallow." He rattled off the proper address, stumbling over every other word. The man was clearly incompetent, but he had been quite useful.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Voldemort stands up from his throne, wand poised lightly between his fingers. He surveys his gathered Death Eaters, peering at the cowering man whose unremarkable, brown hair is visible beneath his mask. A close-up shows Voldemort’s narrowed eyes, calculating and cold.
+</visual>
+<voiceover>
+I said, "I am immensely pleased with this information…" What was his name again? I narrowed my eyes at the still shivering man's unremarkable, brown hair. That was the trouble with giving all your followers masks. They all looked so similar. After a moment of silence, I murmured, "My faithful servant."
+</voiceover>
+</scene>
+<scene>
+<visual>
+The scene shows the Death Eater bowing repeatedly, growing more frantic with each bow. With a flick of Voldemort’s wand, a spark of light slams him into the stone floor, leaving a smear of blood. The Death Eater staggers out through towering doors, clutching his side.
+</visual>
+<voiceover>
+"Thank you, my l-lord," he simpered, bowing again and again. By the fifth time, I'd become peeved and, with an idle flick of my wand, slammed him into the stones. "You are dismissed." The bleeding man stumbled from the room.
+</voiceover>
+</scene>
+<scene>
+<visual>
+Voldemort rises elegantly, black robes swirling, his wand pointed to the ceiling. He glances back sternly at Bellatrix, who bows her head obediently. Candlelight flickers in the background, casting long shadows along the chamber walls.
+</visual>
+<voiceover>
+Seizing the opportunity to escape my followers, I gracefully rose to my feet. "I shall be busy for some time. Do not kill any of your fellow Death Eaters without my permission" – I sternly eyed Bellatrix – "We hardly need a repetition of last Valentine's Day."
+</voiceover>
+</scene>
+<scene>
+<visual>
+Quick close-up of Bellatrix, her wild hair half-shadowed, shame flickering in her eyes as she bows low. Scene fades out to black, only lit by a ghostly blue glow.
+</visual>
+<voiceover>
+She bowed her head sullenly. "Yes my lord."
+</voiceover>
+</scene>
+</video>

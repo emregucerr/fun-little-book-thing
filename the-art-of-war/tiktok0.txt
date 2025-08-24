@@ -1,0 +1,208 @@
+<video>
+<scene>
+<visual>
+A dark thematic cover with the title "Chapter I: Laying Plans" in bold gold letters. Behind the title, an ancient parchment map partially unrolled. The title stands out in the center for a few seconds, then fades out.
+</visual>
+<voiceover>
+Chapter I: Laying Plans.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A scroll of ancient Chinese calligraphy opens vertically. A single red wax seal at the bottom. Then a close-up of the words “Art of War” written elegantly.
+</visual>
+<voiceover>
+Sun Tzu said: The art of war is of vital importance to the State. It is a matter of life and death, a road either to safety or to ruin. Hence, it must not be neglected.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+Five simple icons appear one by one in a vertical row: a balance scale for Moral Law, a sun and moon for Heaven, a mountain for Earth, a chess piece for Commander, and interlocking gears for Method & Discipline.
+</visual>
+<voiceover>
+The art of war is governed by five constant factors: Moral Law, Heaven, Earth, the Commander, and Method and discipline.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A close-up of a silhouetted crowd raising flags behind a solitary leader. The leader stands on a podium, resolute. The crowd looks upward, unified and determined.
+</visual>
+<voiceover>
+The Moral Law causes people to be in complete accord with their ruler, following him regardless of their lives, undismayed by danger.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A vertical split screen: On one side, a night sky with full moon; on the other, a bright sun. Below, snowy ground transitions to desert sand.
+</visual>
+<voiceover>
+Heaven signifies night and day, cold and heat, times and seasons.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A winding path across mountains—open wide at the beginning, then narrows between cliffs. At the center: a fork between lush valley and rocky pass.
+</visual>
+<voiceover>
+Earth comprises distances, danger and security, open ground and narrow passes, life and death.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A marble statue bust of a wise general. Overlay icons appear—an open book for wisdom, a heart for benevolence, a sword for courage, a medal for strictness.
+</visual>
+<voiceover>
+The Commander stands for wisdom, sincerity, benevolence, courage, and strictness.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A bird’s eye view of small army groups forming neat square formations. Arrows point to hierarchical symbols—ranks step up vertically. Roads with supply carts run across the formations.
+</visual>
+<voiceover>
+Method and discipline: marshaling the army in proper subdivisions, ranks, maintaining supply roads, and controlling military expenditure.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+Five icons from previous scenes appear around a large coin with the word "Victory" engraved. The icons pulse as if glowing with significance.
+</visual>
+<voiceover>
+These five heads should be familiar to every general. He who knows them will be victorious; he who knows them not will fail.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A vertical flowchart appears showing questions in gold text: “Which ruler has Moral Law?”, “Which general is more able?”, “Where is discipline enforced?” etc. Each question pops up one above the next.
+</visual>
+<voiceover>
+Let them form the basis of comparison. Which ruler has Moral Law? Which general has more ability? Where is discipline most rigorously enforced?
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+Two coins, one gold labeled “Victory”, one rusted labeled “Defeat”, spin in the air and land on parchment. The gold coin glows softly; the rusted coin fades.
+</visual>
+<voiceover>
+By these seven considerations, I can forecast victory or defeat.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A general’s silhouette stands tall, bright light behind. Then, a second general fades away in shadow, walking out of frame.
+</visual>
+<voiceover>
+The general who hearkens to my counsel and acts upon it will conquer; retain him. The general who ignores it courts defeat; dismiss him.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A winding path cuts across a battlefield. As conditions (rain, fog, sun) change in fast forward, arrows mark the path adjusting in real time.
+</visual>
+<voiceover>
+While heeding my counsel, avail yourself of helpful circumstances. As circumstances are favorable, modify your plans.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+Two chessboards appear side by side. One army pretends to retreat, but a hidden force moves closer. Pieces shift to suggest trickery and strategy.
+</visual>
+<voiceover>
+All warfare is based on deception. When able to attack, seem unable; when using your forces, appear inactive.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A simple bait (red flag or golden coin) is placed on a path. Shadows of enemy soldiers move towards it. Suddenly, a trap snaps shut.
+</visual>
+<voiceover>
+Hold out baits to entice the enemy. Feign disorder and crush him.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A strong fortress, guards at every gate. Arrows point inward showing readiness. Then, a figure slips away down a side path, evading confrontation.
+</visual>
+<voiceover>
+If secure at all points, prepare for him. If in superior strength, evade him.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A heated figure, red faced and shouting, is taunted by a shadowy foe just out of reach, shown with a dismissive gesture.
+</visual>
+<voiceover>
+If your opponent is choleric, irritate him. Pretend to be weak, let him grow arrogant.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A soldier resting on a mat; nearby, a clock spins rapidly. Suddenly, restless movement begins, disrupting the rest.
+</visual>
+<voiceover>
+If he is taking his ease, give him no rest. If his forces are united, separate them.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A pin on a map, marking an unexplored area. An arrow strikes suddenly at the pin. The pin glows as it is attacked.
+</visual>
+<voiceover>
+Attack where he is unprepared, appear where you are not expected.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A closed book with a lock. Light flickers inside but cannot escape. The lock remains shut.
+</visual>
+<voiceover>
+These devices leading to victory must not be divulged beforehand.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A table filled with scrolls, maps and stones. Hands hover over the table, shifting objects in deliberate calculation. Then, a separate scene with scattered chips and disarray.
+</visual>
+<voiceover>
+The general who wins a battle makes many calculations before it is fought; the general who loses makes few.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A vertical bar graph shows “Many Calculations,” “Few Calculations,” and “None”—the “Many” lights up in gold, “Few” flickers dimly, “None” fades away.
+</visual>
+<voiceover>
+Many calculations lead to victory, few to defeat, and none at all to disaster.
+</voiceover>
+</scene>
+
+<scene>
+<visual>
+A parchment with the word “Attention” glowing. On one side: a general with arms crossed in confidence. On the other: a leader turned away in defeat.
+</visual>
+<voiceover>
+By attention to this, I foresee who is likely to win or lose.
+</voiceover>
+</scene>
+</video>

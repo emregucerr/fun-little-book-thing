@@ -1,4 +1,5 @@
 NAMED_ENTITIES_LIST = []
-MOOD_BOARD_IMAGE = "https://fal.media/files/tiger/tPWoo_Mp8XZVeZLJrXv97_54c53d64392e472193ba2e8d93b80386.jpg"
-STYLE = "Infographic style; bold outlines, flat muted colors, and minimal shading, relying on symbolic exaggeration (oversized hands, flags, or simplified map shapes) to convey meaning. Figures and objects are drawn in a cartoonish yet clean manner, with simplified forms and limited palettes. Backgrounds are plain or softly textured or fully flat to keep focus on the subjects. The overall effect is clear, didactic, and symbolic, striking a balance between playful caricature and serious institutional representation."
-BOOK_NAME = "The Making of Dario Amodei"
+MOOD_BOARD_IMAGE = ""
+STYLE = ""
+BOOK_NAME = "Seventh Horcrux | Harry Potter FanFiction"
+BOOK_PATH = "seventh-horcrux.md"

@@ -9,6 +9,7 @@ def generate_image(
     negative_prompt: str = "",
     aspect_ratio: str = "9:16", 
     num_images: int = 1,
+    safety_tolerance: str = "6",
     seed: Optional[int] = None,
     max_retries: int = 3,
     initial_delay: float = 1.0
@@ -22,6 +23,7 @@ def generate_image(
         aspect_ratio (str, optional): The aspect ratio of the generated image. Defaults to "9:16".
                                     Options: "1:1", "16:9", "9:16", "3:4", "4:3"
         num_images (int, optional): Number of images to generate (1-4). Defaults to 1.
+        safety_tolerance (str, optional): Safety level "1"-"6". Defaults to "6".
         seed (int, optional): Random seed for reproducible generation. Defaults to None.
         max_retries (int, optional): Maximum number of retry attempts. Defaults to 3.
         initial_delay (float, optional): Initial delay between retries in seconds. Defaults to 1.0.
@@ -50,13 +52,18 @@ def generate_image(
     
     if initial_delay < 0:
         raise ValueError("initial_delay must be non-negative")
+
+    valid_safety_levels = ["1", "2", "3", "4", "5", "6"]
+    if safety_tolerance not in valid_safety_levels:
+        raise ValueError(f"safety_tolerance must be one of: {valid_safety_levels}")
     
     # Prepare arguments for the API call
     arguments = {
         "prompt": prompt,
         "negative_prompt": negative_prompt,
         "aspect_ratio": aspect_ratio,
-        "num_images": num_images
+        "num_images": num_images,
+        "safety_tolerance": safety_tolerance,
     }
     
     # Add seed if provided

@@ -1,0 +1,14 @@
+
+AI Emerges As The Solution
+
+At Princeton, still raw from his loss, he studied the retina to decode human biology. Our eyes send signals to the visual cortex — about 30% of the cerebral cortex — which then builds the picture we see. [curious] “He used the retina to look at a complete neural population and actually understand what every cell was doing, or at least have that opportunity,” Stephanie Palmer says. “It was about that more than the eye. He wasn’t trying to be an ophthalmologist.”
+
+In Michael Berry’s retina lab, Amodei was dissatisfied with the tools. He co‑invented a better sensor to capture more data. It was atypical for the lab — impressive and nonconformist. His dissertation won the Hertz Thesis Prize for real‑world application.
+
+But his penchant for poking at norms, and a strident sense of how things should be, set him apart. Berry calls him the most talented graduate student he ever had. Still, his focus on technological progress and teamwork clashed with a system that rewards individual achievement. “I think internally, he was kind of a proud person,” Berry says. “I imagine his whole academic career up until that point, whenever he did something, people would stand up and clap. And that was not really happening here.”
+
+He left Princeton. At Stanford with Parag Mallick, he studied proteins in and around tumors to detect metastatic cancer cells. The complexity showed him human limits. “The complexity of the underlying problems in biology felt like it was beyond human scale,” Amodei says. “In order to understand it all, you needed hundreds, thousands of human researchers.”
+
+[excited] Emerging AI changed that. “AI, which I was just starting to see the discoveries in, felt to me like the only technology that could kind of bridge that gap,” he says — something that “could bring us beyond human scale.”
+
+He left academia for the corporate world. He considered a startup, then leaned toward Google, with Google Brain and DeepMind. But Baidu gave Andrew Ng a $100 million budget to research and deploy AI, and he began to form a superteam.
